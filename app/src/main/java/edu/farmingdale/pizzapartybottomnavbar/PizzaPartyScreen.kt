@@ -33,7 +33,8 @@ import kotlin.math.ceil
 // a subclass of ViewModel. Add the following properties to the PizzaPartyViewModel - see Brightspace
 
 @Composable
-fun PizzaPartyScreen( modifier: Modifier = Modifier) {
+fun PizzaPartyScreen( modifier: Modifier = Modifier,
+        viewModel: PizzaPartyViewModel = androidx.lifecycle.viewmodel.compose.viewModel()) {
     var totalPizzas by remember { mutableIntStateOf(0) }
     var numPeopleInput by remember { mutableStateOf("") }
     var hungerLevel by remember { mutableStateOf("Medium") }
@@ -54,7 +55,7 @@ fun PizzaPartyScreen( modifier: Modifier = Modifier) {
         )
         RadioGroup(
             labelText = "How hungry?",
-            radioOptions = listOf("Light", "Medium", "Very hungry"),
+            radioOptions = listOf("Light", "Medium", "Moderately Hungry", "Very hungry"),
             selectedOption = hungerLevel,
             onSelected = { hungerLevel = it },
             modifier = modifier
@@ -142,6 +143,8 @@ fun calculateNumPizzas(
     val slicesPerPerson = when (hungerLevel) {
         "Light" -> 2
         "Medium" -> 3
+        "Moderately Hungry" -> 4
+        "Very Hungry" -> 5
         else -> 5
     }
 
