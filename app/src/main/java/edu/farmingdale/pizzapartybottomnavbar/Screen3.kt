@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -37,29 +38,55 @@ fun Screen3() {
 
 
     val context = LocalContext.current
-    Column ( modifier = Modifier.padding(horizontal = 20.dp).fillMaxSize(),
-        verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally){
-        Slider(value = sliderValue, onValueChange = { sliderValue=it }, Modifier.fillMaxWidth()
-            , enabled = chkd)
 
-        Text(
-            fontSize = 24.sp,
-            text = "Slider Value: ${String.format("%.2f", sliderValue)}",
-            color = Color.Red,
-            modifier = Modifier.padding(16.dp)
-        )
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(
+                brush = Brush.verticalGradient(
+                    colors = listOf(
+                        Color(0xFF6A11CB),
+                        Color(0xFF006400)
+                    )
+                )
+            )
+    ) {
+        Column(
+            modifier = Modifier.padding(horizontal = 20.dp).fillMaxSize(),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Slider(
+                value = sliderValue,
+                onValueChange = { sliderValue = it },
+                Modifier.padding(horizontal = 20.dp).fillMaxWidth(),
+                enabled = chkd
+            )
 
-        Text (fontSize = 20.sp, text = "Second Screen" )
+            Text(
+                fontSize = 24.sp,
+                text = "Slider Value: ${String.format("%.2f", sliderValue)}",
+                color = Color.Red,
+                modifier = Modifier.padding(20.dp)
+            )
 
-        Button(onClick = { val newInt = Intent(Intent.ACTION_VIEW)
-            newInt.setData(Uri.parse("tel:6314202000"))
-            context.startActivity(newInt) }) {
-            Text(fontSize = 20.sp, text ="Call me")
+            Text(fontSize = 20.sp, text = "Second Screen")
+
+            Button(onClick = {
+                val newInt = Intent(Intent.ACTION_VIEW)
+                newInt.setData(Uri.parse("tel:6314202000"))
+                context.startActivity(newInt)
+            }) {
+                Text(fontSize = 20.sp, text = "Call me")
+            }
+
+            Checkbox(
+                checked = chkd,
+                onCheckedChange = { chkd = it },
+                modifier = Modifier.padding(10.dp)
+            )
+
         }
-
-        Checkbox(checked = chkd, onCheckedChange = { chkd=it }, modifier = Modifier.padding(10.dp))
-
     }
 
 }
