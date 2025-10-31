@@ -39,8 +39,8 @@ fun SplashScreen(navController: NavHostController) {
         navController.navigate(BottomNavigationItems.PizzaScreen.route)
     }
 
-    Column (modifier = Modifier
-        .wrapContentSize(Alignment.Center)){
+    Box (modifier = Modifier
+        .fillMaxSize(), contentAlignment = Alignment.Center) {
         Image(painter = painterResource(id = R.drawable.fsclogo), contentDescription ="" )
     }
 }
