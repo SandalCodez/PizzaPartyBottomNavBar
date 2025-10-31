@@ -43,6 +43,13 @@ fun Screen3() {
         Slider(value = sliderValue, onValueChange = { sliderValue=it }, Modifier.fillMaxWidth()
             , enabled = chkd)
 
+        Text(
+            fontSize = 24.sp,
+            text = "Slider Value: ${String.format("%.2f", sliderValue)}",
+            color = Color.Red,
+            modifier = Modifier.padding(16.dp)
+        )
+
         Text (fontSize = 20.sp, text = "Second Screen" )
 
         Button(onClick = { val newInt = Intent(Intent.ACTION_VIEW)
