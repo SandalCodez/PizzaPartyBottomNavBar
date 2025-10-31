@@ -86,23 +86,9 @@ fun DrawerContent(
 
             Divider(modifier = Modifier.padding(vertical = 8.dp))
 
-            DrawerMenuItem(
-                icon = Icons.Default.Info,
-                text = "About",
-                onClick = {
-                    // Handle about click
-                    onCloseDrawer()
-                }
-            )
 
-            DrawerMenuItem(
-                icon = Icons.Default.ExitToApp,
-                text = "Exit",
-                onClick = {
-                    // Handle exit click
-                    onCloseDrawer()
-                }
-            )
+
+
         }
     }
 }
